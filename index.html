@@ -1,0 +1,124 @@
+<!--
+Egyszerű GitHub Pages weboldal (index.html)
+Használat és telepítés (röviden):
+1) Hozz létre egy új repository-t GitHubon (pl. username.github.io vagy bármilyen repo).
+2) Helyezd az index.html fájlt a repo gyökérkönyvtárába (ha a repo neve username.github.io, a gyökérből lesz publikálva), vagy tedd a /docs mappába és a GitHub Pages beállításnál válaszd a main branch /docs mappát.
+3) Commit és push: git add index.html; git commit -m "Add site"; git push
+4) A GitHub Pages a beállításoktól függően perceken belül élni fog (repository név esetén: https://username.github.io).
+
+Ez a fájl egy teljes, önálló HTML + CSS + kis JS sablon — szerkeszthető: címsorok, színek, képek, szövegek.
+-->
+
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GitHub Pages — Saját oldal</title>
+  <meta name="description" content="Egyszerű, letisztult GitHub Pages sablon." />
+  <meta name="author" content="Neved" />
+  <meta property="og:title" content="Saját GitHub Pages oldal" />
+  <meta property="og:description" content="Egyszerű, letisztult weboldal sablon GitHub Pages-hez." />
+  <style>
+    :root{
+      --bg:#0f1724; --card:#0b1220; --muted:#9aa4b2; --accent1:#6ee7b7; --accent2:#60a5fa;
+      --radius:14px; --maxw:1000px;
+      color-scheme: dark;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial; background:linear-gradient(180deg,var(--bg),#071026); color:#e6eef6; -webkit-font-smoothing:antialiased}
+    .container{max-width:var(--maxw);margin:0 auto;padding:28px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#042;box-shadow:0 6px 20px rgba(0,0,0,.4)}
+    nav{display:flex;gap:18px;align-items:center}
+    a{color:inherit;text-decoration:none}
+    .muted{color:var(--muted)}
+    .hero{display:grid;grid-template-columns:1fr;gap:20px;padding:48px 0}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:22px;border-radius:var(--radius);box-shadow:0 6px 30px rgba(2,6,23,.6)}
+    h1{margin:0;font-size:clamp(26px,4vw,42px);line-height:1.02}
+    p.lead{margin:12px 0 0;color:var(--muted);max-width:72ch}
+    .cta{display:inline-block;margin-top:18px;padding:10px 16px;border-radius:12px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:#04192a;font-weight:600}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:20px}
+    .feature{padding:14px;border-radius:12px;background:rgba(255,255,255,0.02)}
+    footer{margin-top:36px;padding:18px 0;text-align:center;color:var(--muted)}
+    /* responsive */
+    @media (max-width:880px){.features{grid-template-columns:repeat(2,1fr)}.hero{padding:28px 0}} 
+    @media (max-width:600px){.features{grid-template-columns:1fr}.container{padding:16px}.logo{width:40px;height:40px}}
+    /* small util */
+    .nav-toggle{display:none}
+    @media (max-width:720px){nav{display:none}.nav-toggle{display:inline-block}}
+    .socials{display:flex;gap:12px;align-items:center}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-size:13px}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">GH</div>
+        <div>
+          <div style="font-weight:700">Saját Oldal</div>
+          <div class="muted" style="font-size:13px">GitHub Pages sablon</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <nav>
+          <a href="#features">Funkciók</a>
+          <a href="#about">Rólunk</a>
+          <a href="#contact">Kapcsolat</a>
+        </nav>
+        <button class="nav-toggle" onclick="toggleNav()">☰</button>
+      </div>
+    </header>
+
+    <main class="hero">
+      <section class="card">
+        <h1>Tiszta, gyors és egyszerű GitHub Pages oldal</h1>
+        <p class="lead">Ez a sablon egyetlen fájlban tartalmaz mindent: mobilbarát elrendezést, egyszerű stílusokat és kis JavaScriptet. Könnyen testre szabható — cseréld a szöveget, a logót és a színeket, majd töltsd fel GitHubra.</p>
+        <a class="cta" href="#about">Szerkesztés megkezdése</a>
+        <div class="features" id="features">
+          <div class="feature"><strong>Reszponzív</strong><div class="muted">Mobilon és asztalon is szép</div></div>
+          <div class="feature"><strong>Könnyen telepíthető</strong><div class="muted">GitHub Pages kompatibilis</div></div>
+          <div class="feature"><strong>Egységes fájl</strong><div class="muted">Nincs build rendszer — egyszerű</div></div>
+        </div>
+      </section>
+
+      <section class="card" id="about">
+        <h2>Rólunk</h2>
+        <p class="muted">Ide írhatod a honlapod rövid bemutatkozását: mivel foglalkozol, mit kínálsz, és miért érdemes kapcsolatba lépni veled.</p>
+        <ul style="margin-top:12px;color:var(--muted)">
+          <li>Áttekinthető, modern stílus</li>
+          <li>Gyors betöltés — nincs külső library</li>
+          <li>Egyszerű testreszabás</li>
+        </ul>
+      </section>
+
+      <section class="card" id="contact">
+        <h2>Kapcsolat</h2>
+        <p class="muted">Küldj e-mailt vagy linkeld a közösségi profilokat.</p>
+        <p style="margin-top:12px"><a class="badge" href="mailto:neved@example.com">neved@example.com</a></p>
+        <div style="margin-top:14px" class="socials">
+          <a class="muted" href="#">Twitter</a>
+          <a class="muted" href="#">GitHub</a>
+          <a class="muted" href="#">LinkedIn</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="muted">© <span id="year"></span> Neved — Ez egy GitHub Pages sablon</div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function toggleNav(){
+      const nav = document.querySelector('nav');
+      if(!nav) return;
+      if(nav.style.display === 'flex') nav.style.display = 'none'; else nav.style.display = 'flex';
+      nav.style.flexDirection = 'column'; nav.style.position='absolute'; nav.style.right='28px'; nav.style.top='68px'; nav.style.background='rgba(5,9,18,0.8)'; nav.style.padding='14px'; nav.style.borderRadius='12px';
+    }
+  </script>
+</body>
+</html>
